@@ -3,7 +3,7 @@ Splunk S2S Pure Python Protocol Implementation. Supports S2S versions v1, v2, v3
 
 ![Screen Shot 2023-01-08 at 12 25 58](https://user-images.githubusercontent.com/519424/214026363-cd9dbe4b-34cb-4900-87cf-806e939f26d0.png)
 
-This client is ideal for users ranging from IT administrators, who need to monitor specific custom events and send that data to Splunk for analysis, to also vulnerability researchers exploring Splunk. 
+This client is ideal for users ranging from IT administrators, who need to monitor specific custom events and send that data to Splunk for analysis, to developers and even vulnerability researchers exploring Splunk. 
 
 In March 2022, we [published](https://claroty.com/team82/research/splunk-patches-indexer-vulnerability-disclosed-by-team82) research explaining how we uncovered a vulnerability in the Splunk S2S parser. Our client was key in finding this vulnerability, [CVE-2021-3422](https://claroty.com/team82/disclosure-dashboard/cve-2021-3422), which we used in order to trigger an OOB write vulnerability in the main Splunk service.
 
@@ -40,7 +40,7 @@ Splunk forwarders are typically used to forward machine-generated data such as l
 
 Forwarders are more robust than raw network feeds for data forwarding, with capabilities such as:
 
-Tagging of metadata (source, source type, and host)
+* Tagging of metadata (source, source type, and host)
 * Configurable buffering
 * Data compression
 * SSL security
