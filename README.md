@@ -1,6 +1,14 @@
 # Splunk S2S Client
 Splunk S2S Pure Python Protocol Implementation. Supports S2S versions v1, v2, v3
 
+Here is a list of some of the benefits of S2S as data source:
+* Metadata field support (host, source, sourcetype, and index)
+* Support in _meta tags
+* Multiline and binary data support 
+* Efficiency and speed
+* Compression 
+* Security features (SSL)
+
 ![Screen Shot 2023-01-08 at 12 25 58](https://user-images.githubusercontent.com/519424/214026363-cd9dbe4b-34cb-4900-87cf-806e939f26d0.png)
 
 This client is ideal for users ranging from IT administrators, who need to monitor specific custom events and send that data to Splunk for analysis, to developers and even vulnerability researchers exploring Splunk. 
@@ -50,7 +58,10 @@ Forwarders are more robust than raw network feeds for data forwarding, with capa
 
 Forwarders communicate with indexers via S2S (Splunk-to-Splunk) over TCP port 9997 which has a couple of versions with different capabilities such as data compression, tagging of metadata, and more. 
 
-S2S is a protocol for securely transmitting data between Splunk servers and Splunk Forwarders. It is designed to be efficient, reliable, and secure, with features such as compression, encryption, and automatic retries. S2S is often used to enable Splunk Forwarders to send data to a central indexer or to allow Splunk indexers to replicate data between each other.
+S2S is a protocol for securely transmitting data between Splunk servers and Splunk Forwarders. It is designed to be efficient, reliable, and secure, with features such as compression, encryption, and automatic retries. S2S is often used to enable Splunk Forwarders to send data to a central indexer or to allow Splunk indexers to replicate data between each other. Here is an example of a simple S2S message in it’s decoded state:
+
+![image](https://user-images.githubusercontent.com/519424/215508360-8b6bbb1c-43ea-4e08-837d-3594c79ae695.png)
+
 
 In order to send an event, the forwarder would need to initiate a TCP conversation and send a unique signature which includes the protocol version, for example `--splunk-cooked-mode-v3--`. Next, depending on the protocol flavor and version, the forwarder would need to communicate the supported capabilities and/or register a channel to deliver the event. Finally, the event can be constructed and sent to the indexer to be handled. Each event must contain the Splunk Index, origin host, source, source type and data itself encoded as key-value pair. Different versions of the protocol encode the data differently.
 
@@ -59,7 +70,9 @@ We are aware of three S2S protocol versions (v1, v2, v3 (new generation)); each 
 ![image](https://user-images.githubusercontent.com/519424/214026701-c5745342-1b5e-4c2c-8511-46f2976b04aa.png)
 
 
-# How to Add New Receiving Inputs to Splunk
+# Data Ingestion
+In order to enable Splunk to process S2S data, we first need to add a new type of receiver. This is how to do it - 
+
 ### Settings → Forwarding and Receiving
 ![Screen Shot 2023-01-04 at 15 24 44](https://user-images.githubusercontent.com/519424/214026842-f5ef9e7e-f1a3-4a42-9d1c-8981ef0b2e65.png)
 
