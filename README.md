@@ -1,11 +1,5 @@
 # Splunk S2S Client
-Splunk S2S Pure Python Protocol Implementation. Supports S2S versions v1, v2, v3. S2S has many benefits including:
-* Metadata field support (host, source, sourcetype, and index)
-* Support in _meta tags
-* Multiline and binary data support 
-* Efficiency and speed
-* Compression 
-* Security features (SSL)
+This is a Splunk S2S Pure Python Protocol Implementation. The client supports S2S versions v1, v2, v3. 
 
 ![Screen Shot 2023-01-08 at 12 25 58](https://user-images.githubusercontent.com/519424/214026363-cd9dbe4b-34cb-4900-87cf-806e939f26d0.png)
 
